@@ -12,6 +12,8 @@ public class Movement : MonoBehaviour
     //jump
     public float jumpForce;
     private bool jump;
+    private int jumpCount;
+    private bool isGrounded;
 
     //dash
     public float dashForce;
@@ -31,7 +33,13 @@ public class Movement : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.W))
         {
-            jump = true;
+            if (isGrounded || jumpCount < 2)
+            {
+                jump = true;
+                isGrounded = false;
+                jumpCount++;
+            }
+            
         }
 
         if(Input.GetKeyDown(KeyCode.Space) && canDash)
@@ -40,13 +48,9 @@ public class Movement : MonoBehaviour
             canDash = false;
         }
 
-        Debug.Log(rb.velocity);
-
-        // Try out this delta time method??
-        //rb.transform.position += new Vector3(speed * Time.deltaTime, 0.0f, 0.0f);
     }
 
-    //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
+    //FixedUpdate is called at a fixed interval and is independent of frame rate.
     void FixedUpdate()
     {
         if(!dash)
@@ -87,6 +91,15 @@ public class Movement : MonoBehaviour
         //bool for dash cooldown
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
+            jumpCount = 0;
+        }
     }
 
 }
