@@ -6,13 +6,14 @@ public class Movement : MonoBehaviour
 {
     //base movement
     public float speed;
-    public float moveHorizontal;
+    private float moveHorizontal;
     private Rigidbody2D rb;
 
     //jump
     public float jumpForce;
     private bool jump;
     private int jumpCount;
+    public int maxJumps;
     private bool isGrounded;
     public LayerMask groundLayer;
     public float circleRadius;
@@ -32,11 +33,14 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        GroundCheck();
+
         moveHorizontal = Input.GetAxis("Horizontal");
 
+        //jump input
         if(Input.GetKeyDown(KeyCode.W))
         {
-            if (isGrounded || jumpCount < 2)
+            if (isGrounded || jumpCount <= maxJumps)
             {
                 jump = true;
                 isGrounded = false;
@@ -45,6 +49,7 @@ public class Movement : MonoBehaviour
             
         }
 
+        //dash input
         if(Input.GetKeyDown(KeyCode.Space) && canDash)
         {
             dash = true;
@@ -74,6 +79,7 @@ public class Movement : MonoBehaviour
 
     void Jump()
     {
+        rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         jump = false;
     }
@@ -104,6 +110,10 @@ public class Movement : MonoBehaviour
     void GroundCheck()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.transform.position, circleRadius, groundLayer);
+
+        if(isGrounded) {
+            jumpCount = maxJumps;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)

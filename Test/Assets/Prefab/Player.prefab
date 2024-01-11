@@ -134,6 +134,7 @@ MonoBehaviour:
   speed: 5
   moveHorizontal: 0
   jumpForce: 5
+  maxJumps: 2
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
