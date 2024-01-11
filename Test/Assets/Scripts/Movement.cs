@@ -14,6 +14,9 @@ public class Movement : MonoBehaviour
     private bool jump;
     private int jumpCount;
     private bool isGrounded;
+    public LayerMask groundLayer;
+    public float circleRadius;
+    public GameObject groundCheck;
 
     //dash
     public float dashForce;
@@ -60,14 +63,19 @@ public class Movement : MonoBehaviour
 
         if (jump)
         {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            jump = false;
+            Jump();
         }
 
         if (dash)
         {
             StartCoroutine(Dash()); 
         }
+    }
+
+    void Jump()
+    {
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        jump = false;
     }
 
     IEnumerator Dash()
@@ -93,13 +101,18 @@ public class Movement : MonoBehaviour
         canDash = true;
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void GroundCheck()
     {
-        if(col.gameObject.tag == "Ground")
-        {
-            isGrounded = true;
-            jumpCount = 0;
-        }
+        isGrounded = Physics2D.OverlapCircle(groundCheck.transform.position, circleRadius, groundLayer);
     }
 
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        
+    }
+
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(groundCheck.transform.position, circleRadius);
+    }
 }
