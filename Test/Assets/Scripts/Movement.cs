@@ -54,6 +54,7 @@ public class Movement : MonoBehaviour
             canDash = false;
         }
 
+        print(jumpCount);
     }
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate.
@@ -63,11 +64,6 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = new Vector2(moveHorizontal * speed, rb.velocity.y);
         }
-
-        /*if (jump)
-        {
-            Jump();
-        }*/
 
         if (dash)
         {
@@ -86,7 +82,7 @@ public class Movement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded && jumpCount > 0)
+        if (context.performed && isGrounded || jumpCount > 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -133,7 +129,10 @@ public class Movement : MonoBehaviour
 
         if(!isGrounded)
         {
-            jumpCount = maxJumps - 1;
+            //take away a jump if player falls off a platform
+            if(jumpCount == maxJumps) {
+                jumpCount--;
+            }
         }
     }
 
