@@ -7,7 +7,6 @@ public class Movement : MonoBehaviour
 {
 
     private Vector2 movementInput = Vector2.zero;
-    private bool jumped = false;
     private bool isFacingRight = true;
     
     //base movement
@@ -82,7 +81,7 @@ public class Movement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded || jumpCount > 0)
+        if (context.performed && (isGrounded || jumpCount > 0))
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -131,7 +130,7 @@ public class Movement : MonoBehaviour
         {
             //take away a jump if player falls off a platform
             if(jumpCount == maxJumps) {
-                jumpCount--;
+                jumpCount = maxJumps - 1;
             }
         }
     }
