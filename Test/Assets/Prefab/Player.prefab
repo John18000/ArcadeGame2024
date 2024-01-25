@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2700071284255571211}
   - component: {fileID: 6621883564782196711}
+  - component: {fileID: 1378844246699352101}
   - component: {fileID: 360794294215992766}
   - component: {fileID: 7430830794516200223}
   - component: {fileID: 1003431796638905857}
@@ -91,6 +92,44 @@ MonoBehaviour:
   dashForce: 2
   dashTime: 0.2
   dashCooldown: 5
+--- !u!114 &1378844246699352101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8925855767149082968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a793bf0eafab1a74aa45d257db727571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  circleRadius: 0
+  groundCheck: {fileID: 0}
+  attkTimer: 0
+  isAttacking: 0
+  comboHit: 0
+  comboDone: 0
+  attkCooldown: 0
+  canRotate: 0
+  attkType: 0
+  attkLunge: 0
+  attkNum: 0
+  attkStart: 0
+  attkPoint1: {fileID: 0}
+  attkPoint2: {fileID: 0}
+  attkPointUp: {fileID: 0}
+  attkPointDown: {fileID: 0}
+  attkRadius: 0
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  playerDamage: 0
+  playerKnockback: 0
+  attkPushback: 0
 --- !u!212 &360794294215992766
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -272,6 +311,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1ce7c477-37aa-41de-97af-8c474c42feaf
     m_ActionName: Player/Jump[/Keyboard/space,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1378844246699352101}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5ee32a64-95c2-41e7-88f4-de5acabd8d7f
+    m_ActionName: Player/Attack[/Keyboard/f,/Keyboard/rightCtrl]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Player
