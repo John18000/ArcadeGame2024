@@ -53,7 +53,6 @@ public class Movement : MonoBehaviour
             canDash = false;
         }
 
-        print(jumpCount);
     }
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate.
@@ -147,11 +146,6 @@ public class Movement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveHorizontal = context.ReadValue<Vector2>().x;
-    }
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        
     }
 
     private void OnDrawGizmosSelected() {
