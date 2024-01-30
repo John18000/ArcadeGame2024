@@ -15,6 +15,7 @@ public class PlayerAttack : MonoBehaviour
     public GameObject groundCheck;
 
     //Attack Variables
+    private bool attkInput;
     public float attkTimer;
     public bool isAttacking;
     public bool comboHit;
@@ -104,13 +105,16 @@ public class PlayerAttack : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.transform.position, circleRadius, groundLayer);
     }
 
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if(context.performed) {
+            print("attack");
+            attkInput = true;
+        }
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         movementInput = context.ReadValue<Vector2>().x;
-    }
-
-    public void OnAttack(InputAction.CallbackContext context)
-    {
-
     }
 }

@@ -108,7 +108,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   circleRadius: 0
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 4507181192547733920}
   attkTimer: 0
   isAttacking: 0
   comboHit: 0
@@ -328,7 +328,7 @@ MonoBehaviour:
     m_ActionId: 5ee32a64-95c2-41e7-88f4-de5acabd8d7f
     m_ActionName: Player/Attack[/Keyboard/f,/Keyboard/rightCtrl]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

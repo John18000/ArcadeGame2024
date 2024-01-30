@@ -1366,10 +1366,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1909976745393752513, guid: 9bba2466cedb76a4ca547dbb318872db, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2700071284255571211, guid: 9bba2466cedb76a4ca547dbb318872db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1410,20 +1406,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6015367195913800729, guid: 9bba2466cedb76a4ca547dbb318872db, type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: Keyboard (WASD)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6550355083250446546, guid: 9bba2466cedb76a4ca547dbb318872db, type: 3}
-      propertyPath: m_Height
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8925855767149082968, guid: 9bba2466cedb76a4ca547dbb318872db, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
